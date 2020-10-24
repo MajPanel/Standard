@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlogHomeController!{% endblock %}
+
+{% block menu %}
+    {{ include('Menu.html.twig', { 'backgroundColor': 'violet' }) }}
+{% endblock  %}
+
+
+{% block body %}
+
+
+    <div class="container">
+
+            <div class="card" >
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ dataget.header }}</h5>
+                    <h6><b>create:</b>{{ dataget.createdAt|date("m/d/Y") }} <b>Modifay_Date:{{ dataget.modifiedAt|date("m/d/Y") }} </b> </h6>
+
+                    <p class="card-text">{{ dataget.content|raw  }}</p>
+                    <a href="{{ path('blog_home') }}" class="btn btn-primary">Home</a>
+                </div>
+            </div>
+
+    </div>
+{% endblock %}

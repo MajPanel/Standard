@@ -1,0 +1,64 @@
+# MajPanel Configuration
+# Path Setting
+# ------------------------------------------------------------------------------
+path:
+  dir:
+    React_MajPanel_Entity : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog'
+    React_MajPanel_Component_Detail : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Component/Detail/'
+    React_MajPanel_Component_Edit : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Component/Edit/'
+    React_MajPanel_Component_Upload : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Component/Upload/'
+    React_MajPanel_Component_Insert : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Component/Insert/'
+    React_MajPanel_Entity_Config : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Config/'
+    React_MajPanel_Entity_Controller : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Controller/'
+    React_MajPanel_Entity_Startup : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Startup/'
+    Symfony_MajPanel_Controller : '%kernel.project_dir%/src/Controller/Admin/MajPanel/Api/Blog'
+    Symfony_MajPanel_Services : '%kernel.project_dir%/src/Services/MajPanel/Blog'
+    Symfony_MajPanel_Form : '%kernel.project_dir%/src/Form/MajPanel/Blog'
+    Symfony_MajPanel_Template : '%kernel.project_dir%/src/templates/Admin/MajPanel/Grid/Blog'
+
+  fileTempApi :
+    Symfony_CrudController : { source : '%kernel.project_dir%/Structure/Api/Controller/CrudController.tmp', target : '%kernel.project_dir%/src/Controller/Admin/MajPanel/Api/Blog/CrudControllerBlog.php'}
+    Symfony_Form_Edit_Validate: { source: '%kernel.project_dir%/Structure/Api/Form/Entity/EditFormValidate.tmp', target: '%kernel.project_dir%/src/Form/MajPanel/Blog/EditFormValidateBlog.php'}
+    Symfony_Form_Insert_Validate : { source : '%kernel.project_dir%/Structure/Api/Form/Entity/InsertFormValidate.tmp', target : '%kernel.project_dir%/src/Form/MajPanel/Blog/InsertFormValidateBlog.php'}
+    Symfony_Service : { source : '%kernel.project_dir%/Structure/Api/Service/EntityService.tmp', target : '%kernel.project_dir%/src/Services/MajPanel/Blog/ServiceBlog.php'}
+    symfony_Home_Controller : { source : '%kernel.project_dir%/Structure/Api/Controller/HomeController.tmp', target : '%kernel.project_dir%/src/Controller/Admin/MajPanel/Grid/Blog/HomeController.php'}
+
+  fileRegisterComponent :  '%kernel.project_dir%/assets/js/entryPoint.js'
+
+  fileTempGrid :
+    React_Home : { source : '%kernel.project_dir%/Structure/Grid/Home.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/home.js'}
+    symfony_Home : { source : '%kernel.project_dir%/Structure/Template/Home.html.twig.tmp', target : '%kernel.project_dir%/templates/Admin/MajPanel/Grid/Blog/Home.html.twig'}
+
+    React_Component_Detail : { source : '%kernel.project_dir%/Structure/Grid/Component/Detail/DetailDataRow.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Component/Detail/DetailDataRow.jsx'}
+    React_Component_Edit : { source : '%kernel.project_dir%/Structure/Grid/Component/Edit/EditDataRow.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Component/Edit/EditDataRow.jsx'}
+    React_Component_Upload : { source : '%kernel.project_dir%/Structure/Grid/Component/Upload/UploadDataRow.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Component/Upload/UploadDataRow.jsx'}
+    React_Component_Insert : { source : '%kernel.project_dir%/Structure/Grid/Component/Insert/InsertDataRow.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Component/Insert/InsertDataRow.jsx'}
+    React_Component_DialogBox : { source : '%kernel.project_dir%/Structure/Grid/Component/DialogBox.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Component/DialogBox.jsx'}
+    React_Component_DetailRow : { source : '%kernel.project_dir%/Structure/Grid/Component/ContentDetailRow.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Component/ContentDetailRow.jsx'}
+
+    React_Config_init : { source : '%kernel.project_dir%/Structure/Grid/Config/Config.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Config/Config.jsx'}
+    React_Config_Edit : { source : '%kernel.project_dir%/Structure/Grid/Config/ConfigEditForm.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Config/ConfigEditForm.jsx'}
+    React_Config_Grid : { source : '%kernel.project_dir%/Structure/Grid/Config/ConfigGridTabel.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Config/ConfigGridTabel.jsx'}
+    React_Config_Insert : { source : '%kernel.project_dir%/Structure/Grid/Config/ConfigInsertForm.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Config/ConfigInsertForm.jsx'}
+
+    React_Controller_Detail : { source : '%kernel.project_dir%/Structure/Grid/Controller/DetailDataController.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Controller/DetailDataController.jsx'}
+    React_Controller_Insert : { source : '%kernel.project_dir%/Structure/Grid/Controller/InsertDataController.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Controller/InsertDataController.jsx'}
+    React_Controller_Edit : { source : '%kernel.project_dir%/Structure/Grid/Controller/EditDataController.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Controller/EditDataController.jsx'}
+    React_Controller_Upload : { source : '%kernel.project_dir%/Structure/Grid/Controller/UploadDataController.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/Controller/UploadDataController.jsx'}
+
+    React_startup_Register : { source : '%kernel.project_dir%/Structure/Grid/startup/registration.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/startup/registration.jsx'}
+    React_startup_Router : { source : '%kernel.project_dir%/Structure/Grid/startup/RouterAdmin.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/Blog/startup/RouterAdminBlog.jsx'}
+
+# Set Column in Grid.
+# ------------------------------------------------------------------------------
+ColumnsGrid : { id : 'id',header : 'header',content : 'content',created_at : 'created_at',modified_at : 'modified_at',active : 'active' }
+SetFiledGrid : "id,header,content,created_at,modified_at,active"
+SetFiledDetail : "id,header,content,created_at,modified_at,active"
+SetFiledEdit : "id,header,content,active"
+SetFiledInsert : "id,header,content,active"
+Entity : {  id : {  header : "Id" , setter : "setId" , type : "integer" , query : "tabel.id" , class : "$requestData['id']"  } , header : {  header : "Header" , setter : "setHeader" , type : "string" , query : "tabel.header" , class : "$requestData['header']"  } , content : {  header : "Content" , setter : "setContent" , type : "text" , query : "tabel.content" , class : "$requestData['content']"  } , created_at : {  header : "CreatedAt" , setter : "setCreatedAt" , type : "datetime" , query : " DATE_FORMAT(tabel.created_at,'%Y.%m.%d %H:%i') as created_at" , class : "new \\DateTime($requestData['created_at'])"  } , modified_at : {  header : "ModifiedAt" , setter : "setModifiedAt" , type : "datetime" , query : " DATE_FORMAT(tabel.modified_at,'%Y.%m.%d %H:%i') as modified_at" , class : "new \\DateTime($requestData['modified_at'])"  } , active : {  header : "Active" , setter : "setActive" , type : "integer" , query : "tabel.active" , class : "$requestData['active']"  } }
+# Set Validation in InsertForm.
+# ------------------------------------------------------------------------------
+
+# Set Validation in EditForm.
+# ------------------------------------------------------------------------------

@@ -1,0 +1,77 @@
+# (c) MajPanel <https://github.com/MajPanel/>
+# MajPanel Configuration
+# Path Setting
+# ------------------------------------------------------------------------------
+path:
+  dir:
+    React_MajPanel_Entity : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}'
+    React_MajPanel_Componen : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Component/'
+    React_MajPanel_Component_Detail : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Component/Detail/'
+    React_MajPanel_Component_Edit : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Component/Edit/'
+    React_MajPanel_Component_Upload : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Component/Upload/'
+    React_MajPanel_Component_Insert : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Component/Insert/'
+    React_MajPanel_Entity_Config : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Config/'
+    React_MajPanel_Entity_Controller : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Controller/'
+    React_MajPanel_Entity_Startup : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Startup/'
+    Symfony_MajPanel_Controller : '%kernel.project_dir%/src/Controller/Admin/MajPanel/Api/{EntityPascalCase}'
+    Symfony_MajPanel_Services : '%kernel.project_dir%/src/Services/MajPanel/{EntityPascalCase}'
+    Symfony_MajPanel_Form : '%kernel.project_dir%/src/Form/MajPanel/{EntityPascalCase}'
+    Symfony_MajPanel_Template : '%kernel.project_dir%/templates/Admin/MajPanel/Grid/{EntityPascalCase}'
+    Symfony_Upload_Dir : '%kernel.project_dir%/public/uploads/{EntityPascalCase}'
+
+  dirDelete:
+    React_Del_Entity : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}'
+    Symfony_Del_Controller : '%kernel.project_dir%/src/Controller/Admin/MajPanel/Api/{EntityPascalCase}'
+    Symfony_Del_Grid : '%kernel.project_dir%/src/Controller/Admin/MajPanel/Grid/{EntityPascalCase}'
+    Symfony_Del_Services : '%kernel.project_dir%/src/Services/MajPanel/{EntityPascalCase}'
+    Symfony_Del_Form : '%kernel.project_dir%/src/Form/MajPanel/{EntityPascalCase}'
+    Symfony_Del_Template : '%kernel.project_dir%/templates/Admin/MajPanel/Grid/{EntityPascalCase}'
+    Symfony_Del_Upload : '%kernel.project_dir%/public/uploads/{EntityPascalCase}'
+    Symfony_Del_Yaml : '%kernel.project_dir%/config/Majpanel/{EntityPascalCase}.yaml'
+
+  fileTempApi :
+    Symfony_CrudController : { source : '%kernel.project_dir%/Structure/Api/Controller/CrudController.tmp', target : '%kernel.project_dir%/src/Controller/Admin/MajPanel/Api/{EntityPascalCase}/{EntityPascalCase}CrudController.php'}
+    Symfony_Form_Edit_Validate: { source: '%kernel.project_dir%/Structure/Api/Form/Entity/EditFormValidate.tmp', target: '%kernel.project_dir%/src/Form/MajPanel/{EntityPascalCase}/EditFormValidate{EntityPascalCase}.php'}
+    Symfony_Form_Insert_Validate : { source : '%kernel.project_dir%/Structure/Api/Form/Entity/InsertFormValidate.tmp', target : '%kernel.project_dir%/src/Form/MajPanel/{EntityPascalCase}/InsertFormValidate{EntityPascalCase}.php'}
+    Symfony_Service : { source : '%kernel.project_dir%/Structure/Api/Service/EntityService.tmp', target : '%kernel.project_dir%/src/Services/MajPanel/{EntityPascalCase}/Service{EntityPascalCase}.php'}
+    symfony_Home_Controller : { source : '%kernel.project_dir%/Structure/Api/Controller/HomeController.tmp', target : '%kernel.project_dir%/src/Controller/Admin/MajPanel/Grid/{EntityPascalCase}/HomeController.php'}
+
+  fileRegisterComponent :  '%kernel.project_dir%/assets/js/entryPoint.js'
+
+  fileTempGrid :
+    React_Home : { source : '%kernel.project_dir%/Structure/Grid/Home.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/home.js'}
+    symfony_Home : { source : '%kernel.project_dir%/Structure/Template/Home.html.twig.tmp', target : '%kernel.project_dir%/templates/Admin/MajPanel/Grid/{EntityPascalCase}/Home.html.twig'}
+
+    React_Component_Detail : { source : '%kernel.project_dir%/Structure/Grid/Component/Detail/DetailDataRow.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Component/Detail/DetailDataRow.jsx'}
+    React_Component_Edit : { source : '%kernel.project_dir%/Structure/Grid/Component/Edit/EditDataRow.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Component/Edit/EditDataRow.jsx'}
+    React_Component_Upload : { source : '%kernel.project_dir%/Structure/Grid/Component/Upload/UploadDataRow.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Component/Upload/UploadDataRow.jsx'}
+    React_Component_Insert : { source : '%kernel.project_dir%/Structure/Grid/Component/Insert/InsertDataRow.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Component/Insert/InsertDataRow.jsx'}
+    React_Component_DialogBox : { source : '%kernel.project_dir%/Structure/Grid/Component/DialogBox.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Component/DialogBox.jsx'}
+    React_Component_DetailRow : { source : '%kernel.project_dir%/Structure/Grid/Component/ContentDetailRow.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Component/ContentDetailRow.jsx'}
+
+    React_Config_init : { source : '%kernel.project_dir%/Structure/Grid/Config/Config.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Config/Config.jsx'}
+    React_Config_Edit : { source : '%kernel.project_dir%/Structure/Grid/Config/ConfigEditForm.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Config/ConfigEditForm.jsx'}
+    React_Config_Grid : { source : '%kernel.project_dir%/Structure/Grid/Config/ConfigGridTabel.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Config/ConfigGridTabel.jsx'}
+    React_Config_Insert : { source : '%kernel.project_dir%/Structure/Grid/Config/ConfigInsertForm.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Config/ConfigInsertForm.jsx'}
+
+    React_Controller_Detail : { source : '%kernel.project_dir%/Structure/Grid/Controller/DetailDataController.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Controller/DetailDataController.jsx'}
+    React_Controller_Insert : { source : '%kernel.project_dir%/Structure/Grid/Controller/InsertDataController.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Controller/InsertDataController.jsx'}
+    React_Controller_Edit : { source : '%kernel.project_dir%/Structure/Grid/Controller/EditDataController.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Controller/EditDataController.jsx'}
+    React_Controller_Upload : { source : '%kernel.project_dir%/Structure/Grid/Controller/UploadDataController.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Controller/UploadDataController.jsx'}
+
+    React_startup_Register : { source : '%kernel.project_dir%/Structure/Grid/Startup/registration.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Startup/registration.jsx'}
+    React_startup_Router : { source : '%kernel.project_dir%/Structure/Grid/Startup/RouterAdmin.tmp', target : '%kernel.project_dir%/assets/js/MajPanel/Grid/{EntityPascalCase}/Startup/RouterAdmin{EntityPascalCase}.jsx'}
+
+# Set Column in Grid.
+# ------------------------------------------------------------------------------
+ColumnsGrid : { {Column} }
+SetFiledGrid : "{GridQueryColumn}"
+SetFiledDetail : "{GridQueryColumn}"
+SetFiledEdit : "{GridQueryColumn}"
+SetFiledInsert : "{GridQueryColumn}"
+Entity : { {EntityProperty} }
+# Set Validation in InsertForm.
+# ------------------------------------------------------------------------------
+
+# Set Validation in EditForm.
+# ------------------------------------------------------------------------------

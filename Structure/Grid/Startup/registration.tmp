@@ -1,0 +1,5 @@
+import ReactOnRails from "react-on-rails";
+import RouterAdmin{EntityPascalCase} from "./RouterAdmin{EntityPascalCase}";
+
+
+ReactOnRails.register({ RouterAdmin{EntityPascalCase}: RouterAdmin{EntityPascalCase} });

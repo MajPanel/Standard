@@ -1,0 +1,26 @@
+import useFetch from 'fetch-suspense';
+import React, { Suspense } from 'react';
+import GalleryDataController from "../../Controller/GalleryDataController";
+
+class GalleryDataRow extends React.Component {
+
+	constructor(props) {
+		super(props);
+
+	}
+
+	render() {
+		const MyFetchingComponent = () => {
+			return  <GalleryDataController rowId={this.props.idRow}/>;
+		};
+
+		return (
+			<Suspense fallback="Loading...">
+				<MyFetchingComponent />
+			</Suspense>
+
+		);
+	}
+}
+
+export default GalleryDataRow;

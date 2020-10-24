@@ -1,0 +1,39 @@
+{% extends 'base.html.admin.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+ {% block entityName %}
+     Blog
+ {% endblock %}
+
+ {% block entityMenu %}
+     {{ parent() }}
+
+     <a href=" {{ path('admin_majpanel_grid_autour_home') }}">
+         <div class="c-menu-item__title">
+        <span><i class="fa fa-angle-right ">
+            </i> Autour</span>
+         </div>
+     </a>
+
+ {% endblock %}
+
+
+{% block body %}
+
+    <main class="l-main">
+        <div class="content-wrapper content-wrapper--with-bg">
+
+            <div class="col-lg-12">{{ react_component('RouterAdminBlog') }}</div>
+
+        </div>
+    </main>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock %}
+

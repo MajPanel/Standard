@@ -1,0 +1,26 @@
+   /*
+    * (c) MajPanel <https://github.com/MajPanel/>
+    *
+    * For the full copyright and license information, please view the LICENSE
+    * file that was distributed with this source code.
+    */
+
+
+	import React, {useState} from 'react';
+	import Divider from "@material-ui/core/Divider";
+    /**
+     * @author Majid Kazerooni <support@majpanel.com>
+     */
+
+	export default (props) => {
+
+		const { rowData } = props;
+
+		return (
+			<div className="container">
+            <Divider/>
+				{ReactDetailDataController}
+			</div>
+		)
+
+	}

@@ -1,0 +1,391 @@
+<?php
+
+    /*
+     * (c) MajPanel <https://github.com/MajPanel/>
+     *
+     * For the full copyright and license information, please view the LICENSE
+     * file that was distributed with this source code.
+     */
+
+
+	namespace App\Controller\Admin\MajPanel\Api\{EntityPascalCase};
+
+
+	use phpDocumentor\Reflection\Types\Integer;
+	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+	use Symfony\Component\HttpFoundation\JsonResponse;
+	use Symfony\Component\Routing\Annotation\Route;
+	use Symfony\Component\HttpFoundation\Request;
+	use Psr\Log\LoggerInterface;
+	use App\Form\MajPanel\{EntityPascalCase}\EditFormValidate{EntityPascalCase};
+	use App\Form\MajPanel\{EntityPascalCase}\InsertFormValidate{EntityPascalCase};
+	use App\Services\MajPanel\AdminFileService;
+	use App\Services\MajPanel\ApiService;
+
+	use App\Entity\{EntityPascalCase};
+	use App\Services\MajPanel\{EntityPascalCase}\Service{EntityPascalCase};
+
+    /**
+     * @author Majid Kazerooni <support@majpanel.com>
+     */
+
+	class {EntityPascalCase}CrudController extends AbstractController
+	{
+		private $limit = 30;
+		private $offset;
+		private $filter;
+		private $sort;
+		private $logger;
+		private $adminFileService;
+		private $apiService;
+
+		/**
+		 * SelectController constructor.
+		 */
+		public function __construct(LoggerInterface $logger,AdminFileService $adminFileService,ApiService $apiService)
+		{
+			$this->logger = $logger;
+			$this->adminFileService=$adminFileService;
+			$this->apiService=$apiService;
+		}
+
+
+		/**
+		 * @Route("majpanel/api/{EntityCamelCase}/datagrid/", name="majpanel_api_{EntityCamelCase}_getall_grid" ,  methods={"GET","HEAD"})
+		 * @param   Request  $request
+		 *
+		 * @return JsonResponse
+		 */
+
+		public function getAllDataGrid(Request $request)
+		{
+			try {
+				$this->limit=$request->query->get('limit');
+				$this->offset=$request->query->get('offset');
+				$this->filter=$request->query->get('filter');
+				$this->sort=$request->query->get('sort');
+
+			    $objectService{EntityPascalCase}     = new Service{EntityPascalCase}($this->getDoctrine()->getManager(),
+				{EntityPascalCase}::class);
+				$result=$objectService{EntityPascalCase}->getDataGrid{EntityPascalCase}($this->setfieldQuery('grid'),$this->filter,$this->sort,$this->offset,$this->limit);
+				return $this->apiService->response($result);
+
+				} catch (\Exception $e) {
+				return $this->apiService->respondValidationError($e->getMessage());
+				}
+		}
+
+		/**
+		 * @Route("majpanel/api/{EntityCamelCase}/getalldata/", name="majpanel_api_{EntityCamelCase}_getall" ,  methods={"GET","HEAD"})
+		 * @param   Request  $request
+		 *
+		 * @return JsonResponse
+		 */
+
+		public function getAllData(Request $request)
+		{
+			try {
+				$this->limit=$request->query->get('limit');
+				$this->offset=$request->query->get('offset');
+				$this->filter=$request->query->get('filter');
+				$objectService{EntityPascalCase}     = new Service{EntityPascalCase}($this->getDoctrine()->getManager(),
+					{EntityPascalCase}::class);
+				return $this->apiService->response( $objectService{EntityPascalCase}->getAll{EntityPascalCase}() );
+
+				} catch (\Exception $e) {
+				return $this->apiService->respondValidationError( $e->getMessage() );
+				}
+
+		}
+
+		/**
+		 * @Route("majpanel/api/{EntityCamelCase}/getid/{type}/{id}/", name="majpanel_api_{EntityCamelCase}_getid" ,  methods={"GET","HEAD"})
+		 *
+		 * @return JsonResponse
+		 */
+
+		public function getId( $type, $id)
+		{
+			try {
+
+				$objectService{EntityPascalCase} = new Service{EntityPascalCase}( $this->getDoctrine()->getManager(), {EntityPascalCase}::class);
+				return $this->apiService->response( $objectService{EntityPascalCase}->get{EntityPascalCase}($id,$this->setfieldQuery( $type ) ) );
+
+				} catch (\Exception $e) {
+
+				return $this->apiService->respondValidationError( $e->getMessage() );
+
+				}
+		}
+
+		/**
+         * @Route("majpanel/api/{EntityCamelCase}/get/{id}/", name="majpanel_api_{EntityCamelCase}_get" ,  methods={"GET","HEAD"})
+		 * @param   Integer  $id
+		 *
+		 * @return JsonResponse
+		 */
+
+        public function getById(Integer $id)
+        {
+	        try {
+
+		        $objectService{EntityPascalCase}  = new Service{EntityPascalCase}($this->getDoctrine()->getManager(),
+			        {EntityPascalCase}::class);
+		        $EntityObject=$objectService{EntityPascalCase}->get{EntityPascalCase}ById($id);
+		        return $this->apiService->response($EntityObject);
+
+	             } catch (\Exception $e) {
+
+		        return $this->apiService->respondValidationError( $e->getMessage() );
+
+	             }
+        }
+
+		/**
+		 * @Route("majpanel/api/{EntityCamelCase}/search/{field}/{value}", name="majpanel_api_{EntityCamelCase}_search_field" ,  methods={"GET","HEAD"})
+		 * @param $field
+		 * @param $value
+		 *
+		 * @return JsonResponse
+		 */
+
+		public function doSearch( $field , $value )
+		{
+			try {
+				$objectService{EntityPascalCase}     = new Service{EntityPascalCase}($this->getDoctrine()->getManager(),
+					{EntityPascalCase}::class);
+				return $this->apiService->response( $objectService{EntityPascalCase}->getSerachField{EntityPascalCase}( $field , $value ) );
+
+				} catch (\Exception $e) {
+
+				return $this->apiService->respondValidationError( $e->getMessage() );
+
+				}
+		}
+
+		/**
+		 * @Route("majpanel/api/{EntityCamelCase}/del/", name="majpanel_api_{EntityCamelCase}_del_fields" ,  methods={"DELETE","HEAD"})
+		 * @param   Request  $request
+		 *
+		 * @return JsonResponse
+		 */
+
+		public function doDelete(Request $request)
+		{
+			try {
+
+				$objectService{EntityPascalCase}  = new Service{EntityPascalCase}($this->getDoctrine()->getManager(),
+					{EntityPascalCase}::class);
+				if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
+
+					$data = json_decode($request->getContent(), true);
+					$request->request->replace(is_array($data) ? $data : array());
+
+					foreach ($data['itemsSelect'] as $id) {
+						$result = $objectService{EntityPascalCase}->delete{EntityPascalCase}($id);
+						$this->adminFileService->removeFile([
+							$this->getParameter('upload_real_path') . '{EntityPascalCase}/'. $id
+						]);
+					}
+				} else 	throw new \Exception(' Content-Type / json  Error ');
+
+				return $this->apiService->respondWithSuccess('Success')	;
+
+			} catch (\Exception $e) {
+
+				return $this->apiService->respondValidationError( $e->getMessage() );
+
+			}
+
+		}
+
+		/**
+		 * @Route("majpanel/api/{EntityCamelCase}/update/", name="majpanel_api_{EntityCamelCase}_update_field" ,  methods={"PUT","HEAD"})
+		 * @param   Request  $request
+		 *
+		 * @return JsonResponse
+		 */
+
+		public function doUpdate(Request $request)
+		{
+			try {
+
+				$Object{EntityPascalCase}=new {EntityPascalCase}();
+				$objectService{EntityPascalCase} = new Service{EntityPascalCase}($this->getDoctrine()->getManager(),
+					{EntityPascalCase}::class);
+
+				if ( 0 === strpos($request->headers->get('Content-Type'), 'application/json') ) {
+					$RestPutData = json_decode($request->getContent(), true);
+					$RestPutData=$RestPutData['data'];
+				} else 	throw new \Exception(' Content-Type / json  Error ');
+
+
+				$datavalidate=new EditFormValidate{EntityPascalCase}( $RestPutData );
+				$validationData=$datavalidate->validateCheck();
+
+				if(empty($validationData['Error'])) {
+
+					$objectService{EntityPascalCase}->edit{EntityPascalCase}( $RestPutData );
+					return $this->apiService->respondWithSuccess('Success')	;
+
+				} else 	throw new \Exception( 'Validate Error' );
+
+				} catch (\Exception $e) {
+
+				return $this->apiService->respondValidationError( $validationData['Error'] );
+
+				}
+		}
+
+		/**
+		 * @Route("majpanel/api/{EntityCamelCase}/insert/", name="majpanel_api_{EntityCamelCase}_insert_field" ,  methods={"POST","HEAD"})
+		 * @param   Request  $request
+		 *
+		 * @return JsonResponse
+		 */
+		public function doInsert(Request $request)
+		{
+			try {
+
+				$Object{EntityPascalCase}=new {EntityPascalCase}();
+				$objectService{EntityPascalCase} = new Service{EntityPascalCase}($this->getDoctrine()->getManager(),
+					{EntityPascalCase}::class);
+
+				if (0 === strpos($request->headers->get('Content-Type') , 'application/json') ) {
+
+					$RestPostData = json_decode($request->getContent(), true);
+					$RestPostData=$RestPostData['data'];
+
+				} else 	throw new \Exception(' Content-Type / json  Error ');
+
+				$datavalidate=new InsertFormValidate{EntityPascalCase}($RestPostData);
+				$validationData=$datavalidate->validateCheck();
+
+				if(empty($validationData['Error'])) {
+
+					$objectService{EntityPascalCase}->insert{EntityPascalCase}($this->setEntity($Object{EntityPascalCase},$RestPostData));
+					$this->adminFileService->makeDir($this->getParameter('upload_real_path').'{EntityPascalCase}/'.$Object{EntityPascalCase}->getId().'/');
+
+					return $this->apiService->respondWithSuccess('Success')	;
+
+				} else 	throw new \Exception( 'Validate Error' );
+
+				} catch (\Exception $e) {
+
+					return $this->apiService->respondValidationError( $validationData['Error'] );
+
+				}
+		}
+
+		/**
+		 * @Route("majpanel/api/{EntityCamelCase}/upload/", name="majpanel_api_{EntityCamelCase}_upload" ,  methods={"POST","HEAD"})
+		 * @param   Request  $request
+		 *
+		 * @return JsonResponse
+		 */
+
+		public function doUpload( Request $request )
+		{
+			try {
+				$files = $request->files->all();
+				$dataPost=$request->request->all();
+
+				foreach ($files as $file)
+				{
+					$fileName=$dataPost['id'].'_'.$file->getClientOriginalName();
+					$this->adminFileService->upload($this->getParameter('upload_real_path').'{EntityPascalCase}/'.$dataPost['id'].'/', $file, $fileName);
+				}
+				return $this->apiService->respondWithSuccess('Success')	;
+
+				} catch (\Exception $e) {
+
+				return $this->apiService->respondValidationError( $e->getMessage() );
+
+				}
+		}
+
+		/**
+		 * @Route("majpanel/api/{EntityCamelCase}/getfiles/{id}", name="majpanel_api_{EntityCamelCase}_getfiles" ,  methods={"GET","HEAD"})
+		 * @param   Integer  $id
+		 *
+		 * @return JsonResponse
+		 */
+
+		public function getFileDir( $id )
+		{
+			try {
+				$pathDir=$this->getParameter('upload_real_path').'{EntityPascalCase}/'.$id.'/';
+				$dirName=$this->getParameter('upload_path').'{EntityPascalCase}/'.$id;
+
+				return $this->apiService->response( $this->adminFileService->getDirFiles( $pathDir,$dirName ) );
+
+				}
+			catch (\Exception $e) {
+				return $this->apiService->respondValidationError( $e->getMessage() );
+
+			}
+		}
+
+		/**
+		 * @Route("majpanel/api/{EntityCamelCase}/delfile/", name="majpanel_api_{EntityCamelCase}_delfile" ,  methods={"POST","HEAD"})
+		 * @param   Request  $request
+		 * @return JsonResponse
+		 */
+
+		public function getDelFile(Request $request)
+		{
+			try {
+
+				$dataPost = $request->request->all();
+				$this->adminFileService->removeFile($this->getParameter('rootApp')
+					. '/public/' . $dataPost['path']);
+
+				return $this->apiService->respondWithSuccess('Success')	;
+
+			} catch (\Exception $e) {
+				return $this->apiService->respondValidationError( $e->getMessage() );
+
+			}
+
+		}
+
+
+
+        /**
+         * @param $type
+         * @return string
+         */
+
+		private function setfieldQuery($type){
+
+			switch ($type) {
+				case "edit":
+					return "{SetFiledEdit}";
+					break;
+				case "detail":
+					return "{SetFiledDetail}";
+					break;
+				case "grid":
+                    return "{SetFiledGrid}";
+                    break;
+			}
+		}
+
+
+		/**
+		 * @param   {EntityPascalCase}   $objectEntity
+		 * @param   array  $requestData
+		 *
+		 * @return {EntityPascalCase}
+		 */
+
+		private function setEntity({EntityPascalCase} $objectEntity,array $requestData)
+		{
+
+			{StringFormApiSetter}
+
+			return $objectEntity;
+
+		}
+
+	}

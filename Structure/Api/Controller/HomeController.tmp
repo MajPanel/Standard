@@ -1,0 +1,35 @@
+<?php
+
+    /*
+     * (c) MajPanel <https://github.com/MajPanel/>
+     *
+     * For the full copyright and license information, please view the LICENSE
+     * file that was distributed with this source code.
+     */
+
+	namespace App\Controller\Admin\MajPanel\Grid\{EntityPascalCase};
+
+	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+	use Symfony\Component\Routing\Annotation\Route;
+	use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+	use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
+    /**
+     * @author Majid Kazerooni <support@majpanel.com>
+     */
+
+	class HomeController extends AbstractController
+	{
+		/**
+		 * @Route("/admin/majpanel/{EntityCamelCase}/home", name="admin_majpanel_grid_{EntityCamelCase}_home")
+		 * @IsGranted("ROLE_ADMIN")
+		 */
+
+		public function index(AuthenticationUtils $authenticationUtils)
+		{
+			return $this->render('Admin/MajPanel/Grid/{EntityPascalCase}/Home.html.twig', [
+				'controller_name' => 'HomeController',
+			]);
+		}
+	}
+

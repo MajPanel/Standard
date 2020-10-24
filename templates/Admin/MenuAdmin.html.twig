@@ -1,0 +1,64 @@
+
+<div class="l-sidebar__content">
+    <nav class="c-menu js-menu">
+        <ul class="u-list">
+
+            <li class="c-menu__item " data-toggle="tooltip" >
+                <div class="c-menu__item__inner"><i class="fa fa-globe"></i>
+                    <div class="c-menu-item__title">
+                        <a href="http://www.majpanel.com" target="_blank"><h1  class="text-white">MajPanel</h1></a>
+                    </div>
+                </div>
+            </li>
+
+
+
+            <li class="c-menu__item " data-toggle="tooltip" title="Proposals">
+                <div class="c-menu__item__inner"><i class="fa fa-file-text-o"></i>
+                    <div class="c-menu-item__title">
+                        <a href="{{ path('admin_majpanel_grid_blog_home') }}" ><span class="text-white">Blog</span></a>
+                    </div>
+                </div>
+            </li>
+
+
+
+            <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
+                <a href="#" data-toggle="collapse" data-target="#submenu-2">
+                    <div class="c-menu__item__inner"><i class="fa fa-table "></i>
+                        <div class="c-menu-item__title"><span class="text-white">Entity <i class="fa fa-fw fa-angle-down pull-right"></i></span></div>
+                    </div></a>
+                <ul id="submenu-2" class="collapse" aria-expanded="false" style="height: 0px;">
+
+                    {{ include('Admin/Entity.html.twig') }}
+                </ul>
+            </li>
+
+
+            <li class="c-menu__item has-submenu" data-toggle="tooltip" title="History">
+                <div class="c-menu__item__inner"><i class="fa fa-book"></i>
+                    <a href="">
+                        <div class="c-menu-item__title">
+                            <a href="{{ path('majpanel_getstart') }}" >
+                                <span class="text-white">Get Start</span>
+                            </a>
+                    </a>
+                </div>
+            </li>
+
+            <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
+                <div class="c-menu__item__inner"><i class="fa fa-home"></i>
+                    <div class="c-menu-item__title">
+                        <a href="{{ path('blog_home') }}" target="_blank" >
+                            <span class="text-white" >Home Page</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+
+
+
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel='stylesheet prefetch' href='{{ asset("css/bootstrap.min.css") }}'>
+    <link rel='stylesheet prefetch' href="{{ asset("css/custom.css") }}">
+</head>
+<body>
+{% block menu %}{% endblock %}
+<div class="container" style="padding-top: 70px">
+    {% block body %}
+
+    {% endblock %}
+</div>
+
+
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright © MajPanel 2020</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<script>
+    {% block javascripts %}
+
+    {% endblock %}
+</script>
+</body>
+</html>

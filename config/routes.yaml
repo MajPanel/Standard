@@ -1,0 +1,19 @@
+#index:
+#    path: /
+#    defaults: { _controller: 'App\Controller\DefaultController::index' }
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+index:
+    path: /
+    defaults: { _controller: 'App\Controller\DefaultController::index' }
+
+api_login_check:
+    path: /api/login_check
+    controller: App\Controller\SecurityController::getJwtTokenUser
+
+admin_login:
+    path:       /login
+    controller: App\Controller\SecurityController::login
+    methods: GET|POST

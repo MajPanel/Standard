@@ -1,0 +1,9 @@
+{
+  "entrypoints": {
+    "server-bundle": {
+      "js": [
+        "/server-bundle.js"
+      ]
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Blog MAjPanel!{% endblock %}
+
+{% block menu %}
+     {{ include('Menu.html.twig', { 'backgroundColor': 'violet' }) }}
+ {% endblock  %}
+
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8 mb-5">
+
+                {% for  value in dataget_all %}
+                <div class="row" >
+
+                <h2>{{ value.header }}</h2>
+                <hr>
+
+                    {% if  value.content |length <100  %}
+
+                        {{ value.content|raw  }}
+
+                    {% else %}
+
+                        {{ value.content[:500]|striptags("&nbsp;&gt;")|raw }}
+
+                        <a href="{{ path('blog_show', {id: value.id }) }}" class="btn btn-primary btn-sm">continue</a>
+                    {% endif %}
+                    <hr>
+               </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="col-md-4 mb-5">
+
+                <h2>Contact Us</h2>
+                <hr>
+                <address>
+                    <strong>Start Bootstrap</strong>
+                    <br>3481 Melrose Place
+                    <br>Beverly Hills, CA 90210
+                    <br>
+                </address>
+                <address>
+                    <abbr title="Phone">P:</abbr>
+                    (123) 456-7890
+                    <br>
+                    <abbr title="Email">E:</abbr>
+                    <a href="mailto:#">name@example.com</a>
+                </address>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+
+
+    </div>
+        <!-- /.row -->
+{% endblock %}

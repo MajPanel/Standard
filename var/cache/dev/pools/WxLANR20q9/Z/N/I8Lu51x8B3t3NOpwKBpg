@@ -1,0 +1,3 @@
+<?php //%255BApp%255CController%255CAdmin%255CMajPanel%255CGrid%255CBook%255CHomeController%255D%255B1%255D
+
+return [PHP_INT_MAX, []];

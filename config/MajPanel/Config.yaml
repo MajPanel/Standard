@@ -1,0 +1,15 @@
+rootServer : "http://127.0.0.1:8000/"
+fileRegisterComponent :  '%kernel.project_dir%/assets/js/entryPoint.js'
+fileTwigComponent :  '%kernel.project_dir%/templates/Admin/Entity.html.twig'
+
+
+#pattern: {
+#  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+#  message: "invalid email address"
+#}
+#
+#  required: "PostCod required" ,
+#  pattern: {
+#    value: /[0-9]{3}/,
+#    message: "invalid number code , 3 number "
+#  }
