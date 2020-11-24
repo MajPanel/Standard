@@ -20,17 +20,6 @@
 		protected $em;
 		protected $entityName;
 
-		/**
-		 * @param   EntityManager  $em
-		 * @param                  $entityName
-		 */
-
-		protected function __construct(EntityManager $em, $entityName)
-		{
-			$this->entityName   = $entityName;
-			$this->em    = $em;
-			$this->model = $em->getRepository($this->entityName);
-		}
 
 		/**
 		 * @return EntityManager

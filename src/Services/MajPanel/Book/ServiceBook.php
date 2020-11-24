@@ -23,8 +23,9 @@
 
 		public function __construct(EntityManager $em, $entityName)
 		{
-			$this->em    = $em;
-			$this->model = $em->getRepository($entityName);
+            $this->entityName   = $entityName;
+            $this->em    = $em;
+            $this->model = $em->getRepository($this->entityName);
 		}
 
 		/**
